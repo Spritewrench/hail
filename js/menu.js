@@ -5,6 +5,7 @@
     this.titleTxt = null;
     this.startTxt = null;
     this.music = null;
+    this.isPlaying = false;
   }
 
   Menu.prototype = {
@@ -24,7 +25,11 @@
       this.input.onDown.add(this.onDown, this);
       
       this.music = this.add.audio('Hail&Release',1,true);
-      this.music.play('',0,1,true);         
+      if(!this.isPlaying){
+        this.music.play('',0,1,true); 
+        this.isPlaying = true;
+      }
+              
     },
 
     update: function () {
