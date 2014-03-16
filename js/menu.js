@@ -28,6 +28,7 @@
       if(!this.isPlaying){
         this.music.play('',0,1,true); 
         this.isPlaying = true;
+        this.music.volume = 0.50;
       }
               
     },
