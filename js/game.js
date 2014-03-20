@@ -34,9 +34,11 @@
 
       
       this.bgLine = [0];
-      for(var i = 0; i < 100;i++){
+      for(var i = 0; i < 200;i++){
         var random = Math.floor((Math.random()*480)+0);
-        this.bgLine[i] = this.add.sprite(random, 0, 'bgLine');
+        this.bgLine[i] = this.add.sprite(random, -100, 'bgLine');
+        this.bgLine[i].width = 10;
+        this.bgLine[i].height = 10;        
         this.bgLine[i].anchor.setTo(0.5, 0.5);      
       }
       
@@ -59,7 +61,7 @@
         var random = Math.floor((Math.random()*2)+1);
         var extra =0;
         if(random == 1){
-          extra = -300;
+          extra = -100;
         }
         else{
           extra = 300
@@ -86,10 +88,12 @@
 
       this.fgLine = [0];
       this.linespeed = [0];
-      for(var i = 0; i < 100;i++){
+      for(var i = 0; i < 200;i++){
         var random = Math.floor((Math.random()*320)+1);
 
-        this.fgLine[i] = this.add.sprite(random, 0, 'fgLine');
+        this.fgLine[i] = this.add.sprite(random, -100, 'fgLine');
+        this.fgLine[i].width = 10;
+        this.fgLine[i].height = 10;          
         this.fgLine[i].anchor.setTo(0.5, 0.5);  
         this.linespeed[i] = 100;
       }       
@@ -139,6 +143,9 @@
       //debris behaviour 
       for(var i=0; i < this.debris.length; i++){
         this.debris[i].body.velocity.y = -(this.speed[i]); //fly up
+        
+
+        
         if(this.debris[i].y < 0){
           var extra = 0;
           var random = Math.floor((Math.random()*2)+1);
@@ -164,7 +171,7 @@
       }
 
       //action lines
-      for(var i=0; i < 100; i++){
+      for(var i=0; i < 200; i++){
         this.fgLine[i].body.velocity.y = -(this.linespeed[i]); //fly up
         this.bgLine[i].body.velocity.y = -(this.linespeed[i]); //fly up
         if(this.bgLine[i].y < 0){

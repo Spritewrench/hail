@@ -31,6 +31,11 @@
 
     update: function () {
       if (this.ready===false && this.cache.isSoundDecoded('Hail&Release') ) {
+        this.ready=true;
+        //hide loading css
+        document.getElementById('loading').style.display = 'none';
+        //show game
+        document.getElementById('-game').style.display = 'block';
         this.game.state.start('menu');
       }
     },
