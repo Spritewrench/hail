@@ -47,6 +47,7 @@ canvas{
 }
 .item:nth-child(2) {
 	-moz-animation-delay: 1251ms;
+  
 	-webkit-animation-delay: 1251ms;
 	animation-delay: 1251ms;
 }
