@@ -22,6 +22,7 @@
     this.linespeed = null;
     this.hp = 5;
     this.index = 0;
+    this.overTimer = null;
 
   }
 
@@ -32,7 +33,7 @@
         , y = this.game.height / 2;
       this.target = x;
 
-      
+      this.overTimer = 200;
       this.bgLine = [0];
       for(var i = 0; i < 200;i++){
         var random = Math.floor((Math.random()*480)+0);
@@ -50,6 +51,7 @@
       this.player.width = 16;
       this.player.height = 16;
       this.player.anchor.setTo(0.5, 0.5);
+      this.player.hp = 2;
       this.input.onDown.add(this.onInputDown, this);      
       
       
@@ -106,6 +108,9 @@
       this.speedHolder= this.speed[0];
       this.dodgeHolder = this.dodgeSpeed;     
       
+      this.score = 0;
+      this.multiplier = 1;
+           
 
 
     },
@@ -131,7 +136,14 @@
         //alert('test');
       }
 
-
+      //regen shield
+      if(this.overTimer < 200){
+        this.overTimer++;
+        if(this.overTimer === 200){
+          this.image.visible = true;
+          this.player.hp++;
+        }
+      }
       
       
       if(this.player.x != this.target){
@@ -206,11 +218,16 @@
       //alert( (this.player.x-this.target === 0)+' && '+(this.debris.y - this.player.y <= 150));
       
       //this.speed = 150;
-        this.speed[this.index] = this.speedHolder;
-        this.dodgeSpeed = this.dodgeHolder;      
-        this.score = 0;
-        this.multiplier = 1;
-        this.game.state.start('menu');      
+   
+        obj1.body.velocity.y = 0; 
+        obj2.y = 800;
+        obj1.hp--;
+        this.image.visible = false;
+        this.overTimer = 0;
+        if(obj1.hp <= 0){
+          this.game.state.start('menu');    
+        }
+        //this.game.state.start('menu');      
 
     },
     onInputDown: function () {
