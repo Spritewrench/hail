@@ -18,6 +18,8 @@
       this.load.setPreloadSprite(this.asset);
       this.load.image('player', 'assets/player.png');
       this.load.image('image', 'assets/afterImage.png');
+      this.load.image('player2', 'assets/player2.png');
+      this.load.image('image2', 'assets/afterImage2.png');      
       this.load.image('fgLine', 'assets/fgLine.png');
       this.load.image('bgLine', 'assets/bgLine.png');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
